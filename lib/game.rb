@@ -35,4 +35,12 @@ class Game
       @player1
     end
   end
+
+  def self.create_game(player1, player2, player_class = Player)
+    @@this_game = Game.new(player1, player2, player_class)
+  end
+
+  def self.this_game
+    @@this_game
+  end
 end

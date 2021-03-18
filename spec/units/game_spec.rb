@@ -40,4 +40,16 @@ describe Game do
       expect(test_game.target).to eq(test_player_2)
     end
   end
+
+  describe '.create_game' do
+    it 'creates an instance of the game and stores it in @@this_game class variable' do
+      expect(Game.create_game(test_player_1,test_player_2, player_class)).to be_instance_of(Game)
+    end
+  end
+
+  describe '.this_game' do
+    it 'returns the current instance of this game' do
+      expect(Game.this_game).to be_instance_of(Game)
+    end
+  end
 end
