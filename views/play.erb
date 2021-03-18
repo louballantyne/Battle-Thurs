@@ -1,1 +1,7 @@
 <h2> <%= @player1 %>'s Hit Points:</h2><p><h2><%= @player2 %>'s Hit Points:</h2><br>
+<form action='/attack_player_2' method="post">
+<button name="attack_player_2" value="Attack_Player_2" type="submit" >Attack Player 2</button>
+</form>
+<%if @player_2_attacked == true%>
+Player 2 has been attacked!
+<% end %>
