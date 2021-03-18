@@ -1,4 +1,4 @@
-require './app'
+require_relative "../../lib/app"
 
 describe Battle do
   describe "The Homepage", type: :feature do
