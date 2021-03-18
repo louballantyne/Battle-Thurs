@@ -11,12 +11,12 @@ enable :sessions
   end
 
   post '/names' do
-    $game = Game.new(params[:player1],params[:player2])
+    Game.create_game(params[:player1],params[:player2])
     redirect '/play'
   end
 
   post '/attack' do
-    $game.attack($game.target)
+    Game.this_game.attack(Game.this_game.target)
     redirect '/play'
   end
 
