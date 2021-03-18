@@ -1,5 +1,9 @@
 <h2> <%= $game.player1.name %>'s Hit Points:</h2><%= $game.player1.hit_points %><p><h2><%= $game.player2.name %>'s Hit Points:</h2> <%= $game.player2.hit_points %><br>
 
+<form action='/attack' method="post">
+  <input name="attack" value="attack" type="submit" >Attack</input>
+</form>
+
 <form action='/attack_player_2' method="post">
   <input name="attack_player_2" value="Attack_Player_2" type="submit" >Attack Player 2</input>
 </form>
@@ -13,3 +17,5 @@ Player 1 has been attacked!
 <%elsif $game.player2.attacked == true%>
 Player 2 has been attacked!
 <% end %>
+
+<h2><%= $game.turn.name %>'s Turn</h2>
