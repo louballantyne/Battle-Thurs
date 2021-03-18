@@ -5,6 +5,7 @@ describe Battle do
     before do
       sign_in_and_play
     end
+
     it "Shows the entered names" do
       expect(page).to have_text 'Caesar'
       expect(page).to have_text 'Pixie'
@@ -12,6 +13,7 @@ describe Battle do
     it "Shows Player 2's Hit Points" do
       expect(page).to have_text "Pixie's Hit Points:"
     end
+
     context "Players can attack each other" do
       it "Player 1 can attack Player 2" do
         click_on('attack_player_2')

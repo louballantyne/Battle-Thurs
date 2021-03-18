@@ -1,10 +1,11 @@
 <h2> <%= $player1.name %>'s Hit Points:</h2><%= $player1.hit_points %><p><h2><%= $player2.name %>'s Hit Points:</h2> <%= $player2.hit_points %><br>
+
 <form action='/attack_player_2' method="post">
-<button name="attack_player_2" value="Attack_Player_2" type="submit" >Attack Player 2</button>
+  <input name="attack_player_2" value="Attack_Player_2" type="submit" >Attack Player 2</input>
 </form>
 
 <form action='/attack_player_1' method="post">
-<button name="attack_player_1" value="Attack_Player_1" type="submit" >Attack Player 1</button>
+  <input name="attack_player_1" value="Attack_Player_1" type="submit" >Attack Player 1</input>
 </form>
 
 <%if $player1.attacked == true%>
