@@ -1,7 +1,14 @@
-<h2> <%= @player1 %>'s Hit Points:</h2><p><h2><%= @player2 %>'s Hit Points:</h2><br>
+<h2> <%= $player1.name %>'s Hit Points:</h2><%= $player1.hit_points %><p><h2><%= $player2.name %>'s Hit Points:</h2> <%= $player2.hit_points %><br>
 <form action='/attack_player_2' method="post">
 <button name="attack_player_2" value="Attack_Player_2" type="submit" >Attack Player 2</button>
 </form>
-<%if @player_2_attacked == true%>
+
+<form action='/attack_player_1' method="post">
+<button name="attack_player_1" value="Attack_Player_1" type="submit" >Attack Player 1</button>
+</form>
+
+<%if $player1.attacked == true%>
+Player 1 has been attacked!
+<%elsif $player2.attacked == true%>
 Player 2 has been attacked!
 <% end %>
