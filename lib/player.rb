@@ -7,4 +7,7 @@ class Player
     @attacked = false
   end
 
+  def reduce_hit_points
+    @hit_points -= 10
+  end
 end

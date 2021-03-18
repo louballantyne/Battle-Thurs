@@ -10,22 +10,17 @@ enable :sessions
   end
 
   post '/names' do
-    $player1 = Player.new(params[:player1])
-    $player2 = Player.new(params[:player2])
+    $game = Game.new(params[:player1],params[:player2])
     redirect '/play'
   end
 
   post '/attack_player_2' do
-    $player2.hit_points -= 10
-    $player2.attacked = true
-    $player1.attacked = false
+    $game.attack($game.player2)
     redirect '/play'
   end
 
   post '/attack_player_1' do
-    $player1.hit_points -= 10
-    $player1.attacked = true
-    $player2.attacked = false
+    $game.attack($game.player1)
     redirect '/play'
   end
 
