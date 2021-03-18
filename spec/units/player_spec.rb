@@ -4,9 +4,9 @@ require_relative "../../lib/player"
 
 
 describe Player do
-  alias_method :player, :subject
+  player = Player.new("Rolo")
   it 'returns its name' do
-    expect(subject).to respond_to(:name)
+    expect(player).to respond_to(:name)
   end
 
 end

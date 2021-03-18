@@ -17,6 +17,9 @@ describe Battle do
         click_on('attack_player_2')
         expect(page).to have_text "Player 2 has been attacked!"
       end
+      it "An attack by Player 1 reduces Player 2's HP by 10" do
+        expect { click_on('attack_player_2') }.to change{$player2.hit_points}.by(-10)
+      end
     end
   end
 end
