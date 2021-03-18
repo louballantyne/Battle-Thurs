@@ -1,21 +1,24 @@
-<h2> <%= $game.player1.name %>'s Hit Points:</h2><%= $game.player1.hit_points %><p><h2><%= $game.player2.name %>'s Hit Points:</h2> <%= $game.player2.hit_points %><br>
+<h2>Player 1: <%= $game.player1.name %>'s Hit Points: <%= $game.player1.hit_points %></h2>
+<h2>Player 2: <%= $game.player2.name %>'s Hit Points: <%= $game.player2.hit_points %> </h2>
 
-<form action='/attack' method="post">
-  <input name="attack" value="attack" type="submit" >Attack</input>
-</form>
+<%if $game.player1.hit_points > 0 && $game.player2.hit_points > 0%>
 
-<form action='/attack_player_2' method="post">
-  <input name="attack_player_2" value="Attack_Player_2" type="submit" >Attack Player 2</input>
-</form>
+  <%if $game.player1.attacked == true%>
+  <h3><%= $game.player1.name %> has been attacked by <%= $game.player2.name %> !<br>
+  <img src="https://s.abcnews.com/images/US/GTY_grizzly_bear_jt_130818_16x9_1600.jpg" style="width:800px;height:450px;"></h3>
+  <%elsif $game.player2.attacked == true%>
+  <h3><%= $game.player2.name %> has been attacked by <%= $game.player1.name %> !<br>
+  <img src="https://i.pinimg.com/originals/58/66/1e/58661e5ab2cd74990e31827cf4083cc2.jpg"></h3>
+  <% end %>
 
-<form action='/attack_player_1' method="post">
-  <input name="attack_player_1" value="Attack_Player_1" type="submit" >Attack Player 1</input>
-</form>
+  <h2><%= $game.turn.name %>'s Turn</h2>
 
-<%if $game.player1.attacked == true%>
-Player 1 has been attacked!
-<%elsif $game.player2.attacked == true%>
-Player 2 has been attacked!
-<% end %>
+  <form action='/attack' method="post">
+    <input name="attack" value="Attack" type="submit" >
+  </form>
 
-<h2><%= $game.turn.name %>'s Turn</h2>
+<%elsif $game.player1.hit_points <= 0 && $game.player2.hit_points > 0 %>
+  <h1><%= $game.player2.name %> won!</h1>
+<%elsif $game.player2.hit_points <= 0 && $game.player1.hit_points > 0%>
+  <h1><%= $game.player1.name %> won!</h1>
+<%end%>

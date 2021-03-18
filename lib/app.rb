@@ -20,16 +20,6 @@ enable :sessions
     redirect '/play'
   end
 
-  post '/attack_player_2' do
-    $game.attack($game.player2)
-    redirect '/play'
-  end
-
-  post '/attack_player_1' do
-    $game.attack($game.player1)
-    redirect '/play'
-  end
-
   get '/play' do
     erb(:play)
   end
