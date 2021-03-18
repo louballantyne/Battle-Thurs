@@ -1,7 +1,10 @@
+require 'singleton'
+
 class Game
+  include Singleton
   attr_accessor :player1, :player2
   attr_reader :turn
-  def initialize(player1, player2, player_class = Player)
+  def setup(player1, player2, player_class = Player)
     @player_class = player_class
     @player1 = @player_class.new(player1)
     @player2 = @player_class.new(player2)
@@ -35,12 +38,13 @@ class Game
       @player1
     end
   end
+  #
+  # def self.instance(player1, player2, player_class = Player)
+  #   @@this_game = Game.instance(player1, player2, player_class)
+  # end
+  #
+  # def self.this_game
+  #   @@this_game
+  # end
 
-  def self.create_game(player1, player2, player_class = Player)
-    @@this_game = Game.new(player1, player2, player_class)
-  end
-
-  def self.this_game
-    @@this_game
-  end
 end

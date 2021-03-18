@@ -1,26 +1,26 @@
-<h2>Player 1: <%= Game.this_game.player1.name %>'s Hit Points: <%= Game.this_game.player1.hit_points %></h2>
-<h2>Player 2: <%= Game.this_game.player2.name %>'s Hit Points: <%= Game.this_game.player2.hit_points %> </h2>
+<h2>Player 1: <%= Game.instance.player1.name %>'s Hit Points: <%= Game.instance.player1.hit_points %></h2>
+<h2>Player 2: <%= Game.instance.player2.name %>'s Hit Points: <%= Game.instance.player2.hit_points %> </h2>
 
-<%if Game.this_game.player1.hit_points > 0 && Game.this_game.player2.hit_points > 0%>
+<%if Game.instance.player1.hit_points > 0 && Game.instance.player2.hit_points > 0%>
 
-  <%if Game.this_game.player1.attacked == true%>
-  <h3><%= Game.this_game.player1.name %> has been attacked by <%= Game.this_game.player2.name %> !<br>
+  <%if Game.instance.player1.attacked == true%>
+  <h3><%= Game.instance.player1.name %> has been attacked by <%= Game.instance.player2.name %> !<br>
   <img src="https://s.abcnews.com/images/US/GTY_grizzly_bear_jt_130818_16x9_1600.jpg" style="width:800px;height:450px;"></h3>
-  <%elsif Game.this_game.player2.attacked == true%>
-  <h3><%= Game.this_game.player2.name %> has been attacked by <%= Game.this_game.player1.name %> !<br>
+  <%elsif Game.instance.player2.attacked == true%>
+  <h3><%= Game.instance.player2.name %> has been attacked by <%= Game.instance.player1.name %> !<br>
   <img src="https://i.pinimg.com/originals/58/66/1e/58661e5ab2cd74990e31827cf4083cc2.jpg" style="height:450px;"></h3>
   <% end %>
 
-  <h2><%= Game.this_game.turn.name %>'s Turn</h2>
+  <h2><%= Game.instance.turn.name %>'s Turn</h2>
 
   <form action='/attack' method="post">
     <input name="attack" value="Attack" type="submit" >
   </form>
 
-<%elsif Game.this_game.player1.hit_points <= 0 && Game.this_game.player2.hit_points > 0 %>
-  <h1><%= Game.this_game.player2.name %> won!</h1>
+<%elsif Game.instance.player1.hit_points <= 0 && Game.instance.player2.hit_points > 0 %>
+  <h1><%= Game.instance.player2.name %> won!</h1>
   <iframe src="https://giphy.com/embed/Nv1roC7mg5Kec" width="480" height="376" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/bear-playing-Nv1roC7mg5Kec">via GIPHY</a></p>
-<%elsif Game.this_game.player2.hit_points <= 0 && Game.this_game.player1.hit_points > 0%>
-  <h1><%= Game.this_game.player1.name %> won!</h1>
+<%elsif Game.instance.player2.hit_points <= 0 && Game.instance.player1.hit_points > 0%>
+  <h1><%= Game.instance.player1.name %> won!</h1>
   <iframe src="https://giphy.com/embed/7o6oVRTLFI2GY" width="366" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/7o6oVRTLFI2GY">via GIPHY</a></p>
 <%end%>

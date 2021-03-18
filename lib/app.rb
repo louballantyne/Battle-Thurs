@@ -11,12 +11,13 @@ enable :sessions
   end
 
   post '/names' do
-    Game.create_game(params[:player1],params[:player2])
+    Game.instance
+    Game.instance.setup(params[:player1],params[:player2])
     redirect '/play'
   end
 
   post '/attack' do
-    Game.this_game.attack(Game.this_game.target)
+    Game.instance.attack(Game.instance.target)
     redirect '/play'
   end
 
