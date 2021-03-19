@@ -7,7 +7,10 @@ class Player
     @attacked = false
   end
 
-  def reduce_hit_points
-    @hit_points -= 10
+  def attack(target)
+    target.hit_points -=10
+    target.attacked = true
+    Game.stored_game.change_turn
   end
+
 end

@@ -1,26 +1,11 @@
-require 'singleton'
-
 class Game
-  include Singleton
   attr_accessor :player1, :player2
   attr_reader :turn
-  def setup(player1, player2, player_class = Player)
+  def initialize(player1, player2, player_class = Player)
     @player_class = player_class
     @player1 = @player_class.new(player1)
     @player2 = @player_class.new(player2)
-    @turn = @player1
-  end
-
-  def attack(target)
-    target.attacked = true
-    target.reduce_hit_points
-    if target == @player1
-      @player2.attacked = false
-    elsif target == @player2
-      @player1.attacked = false
-    end
-    change_turn
-    return target.hit_points
+    @turn = [@player1, @player2].sample
   end
 
   def change_turn
@@ -31,20 +16,21 @@ class Game
     end
   end
 
-  def target
+  def self.new_game(player1,player2)
+    @@stored_game = Game.new(player1, player2, player_class = Player)
+  end
+
+  def self.stored_game
+    @@stored_game
+  end
+  
+  def attack
     if @turn == @player1
-      @player2
+      @player1.attack(@player2)
+      @player1.attacked = false
     else
-      @player1
+      @player2.attack(@player1)
+      @player2.attacked = false
     end
   end
-  #
-  # def self.instance(player1, player2, player_class = Player)
-  #   @@this_game = Game.instance(player1, player2, player_class)
-  # end
-  #
-  # def self.this_game
-  #   @@this_game
-  # end
-
 end
