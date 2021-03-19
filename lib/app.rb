@@ -10,13 +10,14 @@ enable :sessions
     erb(:index)
   end
 
-  post '/attack' do
-    Game.stored_game.attack
+  post '/names' do
+    Game.instance
+    Game.instance.setup(params[:player1],params[:player2])
     redirect '/play'
   end
 
-  post '/names' do
-    Game.new_game(params[:player1],params[:player2])
+  post '/attack' do
+    Game.instance.attack(Game.instance.target)
     redirect '/play'
   end
 

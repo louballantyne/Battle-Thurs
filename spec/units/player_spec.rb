@@ -1,10 +1,12 @@
-require_relative '../../lib/player'
+
+require_relative "../../lib/app"
+require_relative "../../lib/player"
+
 
 describe Player do
-  subject { Player.new('Pixie') }
-  describe 'the player has attributes' do
-    it 'knows its name' do
-      expect(subject).to respond_to(:name)
-    end
+  player = Player.new("Rolo")
+  it 'returns its name' do
+    expect(player).to respond_to(:name)
   end
+
 end
